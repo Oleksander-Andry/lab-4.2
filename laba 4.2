@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+
+namespace Mywork
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            double eps = 1e-6;
+            float value = 0, sum = 1;
+            Console.Write("Enter x:");
+            float x = float.Parse(Console.ReadLine());
+            float multiX = x;
+            int number = 1, i = 1;
+            bool boolValue = true;
+            while (boolValue)
+            {
+                value = multiX / number;
+                if (i % 2 == 0)
+                {
+                    value *= -1;
+                }
+                sum += value;
+                number += 2;
+                multiX *= x * x;
+                if (value < eps)
+                {
+                    boolValue = false;
+                }
+            }
+            Console.WriteLine("Sum = {0}", sum);
+            double y = Math.Atan(x);
+            Console.WriteLine("y = {0:f3}", (float)y);
+        }
+    }
+}
